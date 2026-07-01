@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class JumpHandlerKeyboard : MonoBehaviour, IJumper
+{
+    public event Action OnJumpPressed;
+
+    [SerializeField] private KeyCode[] _keys;
+
+    private void Update()
+    {
+        CheckKeys();
+    }
+
+    private void CheckKeys()
+    {
+        for (int i = 0; i < _keys.Length; i++)
+        {
+            if (Input.GetKeyDown(_keys[i]))
+            {
+                OnJumpPressed?.Invoke();
+                return;
+            }
+        }
+    }
+}

@@ -16,5 +16,8 @@ MonoBehaviour:
   - {fileID: 4014605042309313887, guid: 9548904809c4b044ca01c3def01b518d, type: 3}
   - {fileID: 4021872668783158037, guid: 107b496d252c40348a4e7f5ff5155f35, type: 3}
   - {fileID: 3809508780398417820, guid: f2f853f813bf04341b667cdf4674967b, type: 3}
-  <SpawnInterval>k__BackingField: 2
+  <SpawnIntervalMax>k__BackingField: 2
+  <SpawnIntervalMin>k__BackingField: 1
+  <StepsToSpeedUp>k__BackingField: 10
+  <SpeedUpKoef>k__BackingField: 0.2
   <MoveSpeed>k__BackingField: 3

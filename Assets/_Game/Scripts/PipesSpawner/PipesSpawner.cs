@@ -8,9 +8,12 @@ public class PipesSpawner : MonoBehaviour
     private PipesConfigSO _config;
     private Coroutine _spawnCoroutine;
 
+    private float _spawnInterval;
+
     public PipesSpawner Initialize(PipesConfigSO config)
     {
         _config = config;
+        _spawnInterval = _config.SpawnIntervalMax;
         Run();
         return this;
     }
@@ -22,10 +25,17 @@ public class PipesSpawner : MonoBehaviour
 
     private IEnumerator SpawnPipesLoop()
     {
+        int count = 0;
         while (true)
         {
             SpawnPipe();
-            yield return new WaitForSeconds(_config.SpawnInterval);
+            count++; 
+            if (count == _config.StepsToSpeedUp && _spawnInterval > _config.SpawnIntervalMin)
+            {
+                _spawnInterval -= _config.SpeedUpKoef;
+                count = 0;
+            }
+            yield return new WaitForSeconds(_spawnInterval);
         }
     }
 

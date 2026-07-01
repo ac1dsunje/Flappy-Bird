@@ -155,6 +155,7 @@ MonoBehaviour:
   _scoreText: {fileID: 994889656}
   _pipesSpawner: {fileID: 342774153}
   _pipesConfig: {fileID: 11400000, guid: ded29e51a0ec76e4c86727128c787db0, type: 2}
+  _pipesPoolConfig: {fileID: 11400000, guid: 20cfb56df64035241a8c9bac8ccaf1b8, type: 2}
   _bordersConfig: {fileID: 11400000, guid: 05044e6d8ac51d64a9446fc4f0b02cda, type: 2}
 --- !u!4 &204636879
 Transform:

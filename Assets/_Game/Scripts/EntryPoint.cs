@@ -14,6 +14,7 @@ public class EntryPoint: MonoBehaviour
     [Header("Pipes")]
     [SerializeField] private PipesSpawner _pipesSpawner;
     [SerializeField] private PipesConfigSO _pipesConfig;
+    [SerializeField] private PoolConfig _pipesPoolConfig;
 
     [Header("Borders")]
     [SerializeField] private BordersConfigSO _bordersConfig;
@@ -21,10 +22,11 @@ public class EntryPoint: MonoBehaviour
     private BirdController _bird;
     private GameManager _gameManager;
 
-    private IJumper _jumper;
+    private IJumpInput _jumper;
 
     private JumpInputFactory _jumpInputFactory;
     private BirdFactory _birdFactory;
+    private PipesFactory _pipesFactory;
 
 
     private void Awake()
@@ -32,7 +34,7 @@ public class EntryPoint: MonoBehaviour
         CreateFactories();
         CreateBorders();
         _bird = _birdFactory.Get();
-        _pipesSpawner.Initialize(_pipesConfig);
+        _pipesSpawner.Initialize(_pipesConfig, _pipesFactory);
         _gameManager = new(_scene, _bird, _scoreText);
     }
 
@@ -42,6 +44,7 @@ public class EntryPoint: MonoBehaviour
         _jumper = _jumpInputFactory.Get();
 
         _birdFactory = new(_birdConfig, _jumper);
+        _pipesFactory = new(_pipesPoolConfig);
     }
 
     private void CreateBorders()

@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface IJumper
+public interface IJumpInput
 {
     public event Action OnJumpPressed;
 }

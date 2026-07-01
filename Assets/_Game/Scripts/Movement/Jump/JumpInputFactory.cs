@@ -15,16 +15,18 @@ public class JumpInputFactory
         _config = config;
     }
 
-    public IJumper Get()
+    public IJumpInput Get()
     {
-        IJumper _jumper = null;
-        if (_config.Type == JumpInputTypes.keyboard)
+        IJumpInput _jumper = null;
+        switch (_config.Type)
         {
-            _jumper = Object.Instantiate(_config.KeyboardPrefab).GetComponent<IJumper>();
-        }
-        else if (_config.Type == JumpInputTypes.mouse)
-        {
-            _jumper = Object.Instantiate(_config.MousePrefab).GetComponent<IJumper>();
+            case (JumpInputTypes.keyboard):
+                _jumper = Object.Instantiate(_config.KeyboardPrefab).GetComponent<IJumpInput>();
+                break;
+
+            case (JumpInputTypes.mouse):
+                _jumper = Object.Instantiate(_config.MousePrefab).GetComponent<IJumpInput>();
+                break;
         }
         return _jumper;
     }

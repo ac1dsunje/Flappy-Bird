@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PipeController: MonoBehaviour
 {
     private Rigidbody2D _rb;
     private float _moveSpeed;
+
+    public event Action<PipeController> OnPipeFinished;
 
     public void Initialize(float moveSpeed)
     {
@@ -21,7 +24,7 @@ public class PipeController: MonoBehaviour
     {
         if (collision.CompareTag("Border"))
         {
-            Destroy(gameObject);
+            OnPipeFinished?.Invoke(this);
         }
     }
 }

@@ -3,9 +3,9 @@
 public class BirdFactory
 {
     private readonly BirdConfigSO _config;
-    private readonly IJumper _jumper;
+    private readonly IJumpInput _jumper;
 
-    public BirdFactory(BirdConfigSO config, IJumper jumper)
+    public BirdFactory(BirdConfigSO config, IJumpInput jumper)
     {
         _config = config;
         _jumper = jumper;

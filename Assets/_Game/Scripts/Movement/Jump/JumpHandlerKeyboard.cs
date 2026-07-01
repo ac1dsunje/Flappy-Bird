@@ -1,7 +1,7 @@
 ﻿using System;   
 using UnityEngine;
 
-public class JumpHandlerKeyboard : MonoBehaviour, IJumper
+public class JumpHandlerKeyboard : MonoBehaviour, IJumpInput
 {
     public event Action OnJumpPressed;
 

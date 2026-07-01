@@ -6,12 +6,12 @@ public class BirdController : MonoBehaviour
 {
     private MovementConfigSO _config;
     private Rigidbody2D _rb;
-    private IJumper _input;
+    private IJumpInput _input;
 
     public event Action OnHit;
     public event Action OnPipePassed;
 
-    public BirdController Initialize(MovementConfigSO config, IJumper input)
+    public BirdController Initialize(MovementConfigSO config, IJumpInput input)
     {
         _config = config; 
         _input = input;

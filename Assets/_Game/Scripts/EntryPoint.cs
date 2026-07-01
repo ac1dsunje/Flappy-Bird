@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class EntryPoint: MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class EntryPoint: MonoBehaviour
 
     [SerializeField] private BirdConfigSO _birdConfig;
     [SerializeField] private JumpInputSO _jumpInputConfig;
+
+    [SerializeField]  private TextMeshProUGUI _scoreText;
 
     [Header("Pipes")]
     [SerializeField] private PipesSpawner _pipesSpawner;
@@ -30,7 +33,7 @@ public class EntryPoint: MonoBehaviour
         CreateBorders();
         _bird = _birdFactory.Get();
         _pipesSpawner.Initialize(_pipesConfig);
-        _gameManager = new(_scene, _bird);
+        _gameManager = new(_scene, _bird, _scoreText);
     }
 
     private void CreateFactories()

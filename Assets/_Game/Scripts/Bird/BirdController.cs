@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BirdController : MonoBehaviour
@@ -10,6 +9,7 @@ public class BirdController : MonoBehaviour
     private IJumper _input;
 
     public event Action OnHit;
+    public event Action OnPipePassed;
 
     public BirdController Initialize(MovementConfigSO config, IJumper input)
     {
@@ -48,9 +48,9 @@ public class BirdController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Wall"))
+        if (collision.CompareTag("Pipe"))
         {
-            Debug.Log("Passed!");
+            OnPipePassed?.Invoke();
         }
     }
 }

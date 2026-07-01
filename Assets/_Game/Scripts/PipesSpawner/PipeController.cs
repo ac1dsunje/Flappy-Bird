@@ -17,4 +17,12 @@ public class PipeController: MonoBehaviour
 
         _rb.linearVelocity = Vector2.left * _moveSpeed;
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Border"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

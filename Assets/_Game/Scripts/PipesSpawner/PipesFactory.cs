@@ -16,7 +16,7 @@ public class PipesFactory : PooledComponentFactory<PipeController>
     {
         var pipe = GetItem(prefab);
         pipe.transform.SetParent(parent, false);
-        pipe.transform.localPosition = parent.position;
+        pipe.transform.position = parent.position;
         pipe.Initialize(moveSpeed);
         return pipe;
     }

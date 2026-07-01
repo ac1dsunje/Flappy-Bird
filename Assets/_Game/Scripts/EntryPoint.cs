@@ -4,7 +4,7 @@ public class EntryPoint: MonoBehaviour
 {
     [SerializeField] private BirdConfigSO _birdConfig;
     [SerializeField] private Camera _cam;
-    [SerializeField] private GameObject _jumpInput;
+    [SerializeField] private JumpInputSO _jumpInput;
     [Scene] [SerializeField] private string _scene;
 
     [Header("Borders")]
@@ -37,7 +37,14 @@ public class EntryPoint: MonoBehaviour
 
     private void CreateJumpInput()
     {
-        _jumper = Instantiate(_jumpInput).GetComponent<IJumper>();
+        if (_jumpInput.Type == JumpInputTypes.keyboard)
+        {
+            _jumper = Instantiate(_jumpInput.KeyboardPrefab).GetComponent<IJumper>();
+        }
+        else if (_jumpInput.Type == JumpInputTypes.mouse)
+        {
+            _jumper = Instantiate(_jumpInput.MousePrefab).GetComponent<IJumper>();
+        }
     }
 
     private void OnDisable()

@@ -1,4 +1,5 @@
- using UnityEngine;
+using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -6,35 +7,33 @@ public class BirdController : MonoBehaviour
 {
     private MovementConfigSO _config;
     private Rigidbody2D _rb;
-    private string _scene;
+    private IJumper _input;
 
-    public BirdController Initialize(MovementConfigSO config, string scene)
+    public event Action OnWallHit;
+
+    public BirdController Initialize(MovementConfigSO config, IJumper input)
     {
         _config = config; 
-        _scene = scene;
+        _input = input;
+
+        _input.OnJumpPressed += Jump;
 
         _rb = GetComponent<Rigidbody2D>();
         return this;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        if (!CheckJumpButton()) return;
-        Jump();
-        Rotate();
-    }
-
-    private bool CheckJumpButton()
-    {
-        return (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0));
+        _input.OnJumpPressed -= Jump;
     }
 
     private void Jump()
     {
         _rb.linearVelocity = Vector2.up * _config.JumpSpeed;
+        RotateUp();
     }
 
-    private void Rotate()
+    private void RotateUp()
     {
         transform.eulerAngles = new Vector3(0, 0, _rb.linearVelocityY * _config.RotatePower);
     }
@@ -43,7 +42,7 @@ public class BirdController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            SceneManager.LoadScene(_scene);
+            OnWallHit?.Invoke();
         }
     }
 }

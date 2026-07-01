@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class EntryPoint: MonoBehaviour
 {
     [SerializeField] private BirdConfigSO _birdConfig;
     [SerializeField] private Camera _cam;
-    [SerializeField] private JumpInputSO _jumpInput;
+    [SerializeField] private JumpInputSO _jumpInputConfig;
     [Scene] [SerializeField] private string _scene;
 
     [Header("Borders")]
@@ -15,36 +16,31 @@ public class EntryPoint: MonoBehaviour
     private GameManager _gm;
     private IJumper _jumper;
 
+    [Header("Factories")]
+    private JumpInputFactory _jumpInputFactory;
+    private BirdFactory _birdFactory;
+
+
     private void Awake()
     {
+        CreateFactories();
         CreateBorders();
-        CreateJumpInput();
-        CreateAndInitializeBird(_birdConfig);
+        _bird = _birdFactory.Get();
         _gm = new(_scene, _bird);
     }
 
-    private void CreateAndInitializeBird(BirdConfigSO config)
+    private void CreateFactories()
     {
-        _bird = Instantiate(config.Prefab, config.SpawnPoint, Quaternion.identity).GetComponent<BirdController>();
-        _bird.Initialize(config.Movement, _jumper);
+        _jumpInputFactory = new(_jumpInputConfig);
+        _jumper = _jumpInputFactory.Get();
+
+        _birdFactory = new(_birdConfig, _jumper);
     }
 
     private void CreateBorders()
     {
         Instantiate(_ground);
         Instantiate(_sky);
-    }
-
-    private void CreateJumpInput()
-    {
-        if (_jumpInput.Type == JumpInputTypes.keyboard)
-        {
-            _jumper = Instantiate(_jumpInput.KeyboardPrefab).GetComponent<IJumper>();
-        }
-        else if (_jumpInput.Type == JumpInputTypes.mouse)
-        {
-            _jumper = Instantiate(_jumpInput.MousePrefab).GetComponent<IJumper>();
-        }
     }
 
     private void OnDisable()

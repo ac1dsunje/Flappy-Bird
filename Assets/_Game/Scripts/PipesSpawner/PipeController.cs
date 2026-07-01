@@ -24,5 +24,4 @@ public class PipeController: MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

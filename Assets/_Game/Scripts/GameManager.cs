@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class GameManager: IDisposable
 {
@@ -11,16 +12,21 @@ public class GameManager: IDisposable
         _scene = scene;
         _bird = bird;
 
-        _bird.OnWallHit += RestartGame;
+        _bird.OnHit += RestartGame;
     }
 
-    public void RestartGame()
+    private void RestartGame()
     {
         SceneManager.LoadScene(_scene);
     }
 
+    private void OnPipePassed()
+    {
+        Debug.Log("Pipe passed");
+    }
+
     public void Dispose()
     {
-        _bird.OnWallHit -= RestartGame;
+        _bird.OnHit -= RestartGame;
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4eb3121650f6143bb44c134fd9fdfd, type: 3}
+  m_Name: PipesSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::PipesConfigSO
+  <PipePrefabs>k__BackingField:
+  - {fileID: 4014605042309313887, guid: 9548904809c4b044ca01c3def01b518d, type: 3}
+  <SpawnInterval>k__BackingField: 2
+  <MoveSpeed>k__BackingField: 3

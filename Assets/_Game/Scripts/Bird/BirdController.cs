@@ -9,7 +9,7 @@ public class BirdController : MonoBehaviour
     private Rigidbody2D _rb;
     private IJumper _input;
 
-    public event Action OnWallHit;
+    public event Action OnHit;
 
     public BirdController Initialize(MovementConfigSO config, IJumper input)
     {
@@ -40,9 +40,17 @@ public class BirdController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Pipe") || other.gameObject.CompareTag("Border"))
         {
-            OnWallHit?.Invoke();
+            OnHit?.Invoke();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Wall"))
+        {
+            Debug.Log("Passed!");
         }
     }
 }

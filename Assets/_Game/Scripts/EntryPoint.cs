@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EntryPoint: MonoBehaviour
 {
@@ -8,17 +7,16 @@ public class EntryPoint: MonoBehaviour
 
     [SerializeField] private BirdConfigSO _birdConfig;
     [SerializeField] private JumpInputSO _jumpInputConfig;
+
+    [Header("Pipes")]
+    [SerializeField] private PipesSpawner _pipesSpawner;
     [SerializeField] private PipesConfigSO _pipesConfig;
 
-    [SerializeField] private CoroutineRunner _coroutineRunner;
-
     [Header("Borders")]
-    [SerializeField] private GameObject _ground;
-    [SerializeField] private GameObject _sky;
+    [SerializeField] private BordersConfigSO _bordersConfig;
 
     private BirdController _bird;
     private GameManager _gameManager;
-    private PipesSpawner _pipesSpawner;
 
     private IJumper _jumper;
 
@@ -31,8 +29,8 @@ public class EntryPoint: MonoBehaviour
         CreateFactories();
         CreateBorders();
         _bird = _birdFactory.Get();
+        _pipesSpawner.Initialize(_pipesConfig);
         _gameManager = new(_scene, _bird);
-        _pipesSpawner = new(_coroutineRunner, _pipesConfig);
     }
 
     private void CreateFactories()
@@ -45,8 +43,9 @@ public class EntryPoint: MonoBehaviour
 
     private void CreateBorders()
     {
-        Instantiate(_ground);
-        Instantiate(_sky);
+        Instantiate(_bordersConfig.Start);
+        Instantiate(_bordersConfig.Ground);
+        Instantiate(_bordersConfig.Sky);
     }
 
     private void OnDisable()

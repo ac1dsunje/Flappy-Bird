@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PipesConfigSO
   <PipePrefabs>k__BackingField:
   - {fileID: 4014605042309313887, guid: 9548904809c4b044ca01c3def01b518d, type: 3}
-  - {fileID: 4014605042309313887, guid: 2eb3e20d78a5bf74a8b17640f0dbd180, type: 3}
-  - {fileID: 4014605042309313887, guid: 93e89e5bec8a7a142b09f241fb2882a8, type: 3}
+  - {fileID: 2489667538432646309, guid: 107b496d252c40348a4e7f5ff5155f35, type: 3}
+  - {fileID: 1655832371755445186, guid: f2f853f813bf04341b667cdf4674967b, type: 3}
   <SpawnInterval>k__BackingField: 2
   <MoveSpeed>k__BackingField: 3

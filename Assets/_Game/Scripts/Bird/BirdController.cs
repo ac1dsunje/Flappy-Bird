@@ -3,13 +3,13 @@
 public class BirdController: IDisposable
 {
     private readonly BirdModel _model;
-    private readonly BirdView _view;
+    private readonly IBirdView _view;
     private readonly IJumpInput _jumpInput;
 
     public event Action OnHit;
     public event Action OnPipePassed;
 
-    public BirdController(BirdModel model, BirdView view, IJumpInput input)
+    public BirdController(BirdModel model, IBirdView view, IJumpInput input)
     {
         _model = model;
         _view = view;
@@ -23,7 +23,7 @@ public class BirdController: IDisposable
 
     private void Jump()
     {
-        _view.Jump(_model.JumpForce, _model.RotatePower);
+        _view.Jump(_model.JumpForce);
     }
 
     private void OnHitHandle() => OnHit?.Invoke();

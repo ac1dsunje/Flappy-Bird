@@ -1,11 +1,9 @@
 ﻿public class BirdModel
 {
     public float JumpForce { get; private set; }
-    public float RotatePower { get; private set; }
 
-    public BirdModel(MovementConfigSO config)
+    public BirdModel(float jumpSpeed)
     {
-        JumpForce = config.JumpSpeed;
-        RotatePower = config.RotatePower;
+        JumpForce = jumpSpeed;
     }
 }

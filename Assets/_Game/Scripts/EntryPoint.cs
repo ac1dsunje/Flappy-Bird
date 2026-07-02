@@ -25,7 +25,6 @@ public class EntryPoint: MonoBehaviour
     private IJumpInput _jumper;
 
     private JumpInputFactory _jumpInputFactory;
-    private BirdFactory _birdFactory;
     private PipesFactory _pipesFactory;
 
 
@@ -33,7 +32,9 @@ public class EntryPoint: MonoBehaviour
     {
         CreateFactories();
         CreateBorders();
-        _bird = _birdFactory.Get();
+
+        _bird = CreateBird();
+
         _pipesSpawner.Initialize(_pipesConfig, _pipesFactory);
         _gameManager = new(_scene, _bird, _scoreText);
     }
@@ -43,7 +44,6 @@ public class EntryPoint: MonoBehaviour
         _jumpInputFactory = new(_jumpInputConfig);
         _jumper = _jumpInputFactory.Get();
 
-        _birdFactory = new(_birdConfig, _jumper);
         _pipesFactory = new(_pipesPoolConfig);
     }
 
@@ -52,6 +52,13 @@ public class EntryPoint: MonoBehaviour
         Instantiate(_bordersConfig.Start);
         Instantiate(_bordersConfig.Ground);
         Instantiate(_bordersConfig.Sky);
+    }
+
+    private BirdController CreateBird()
+    {
+        var bird = Instantiate(_birdConfig.Prefab, _birdConfig.SpawnPoint, Quaternion.identity).GetComponent<BirdController>();
+        bird.Initialize(_birdConfig.Movement, _jumper);
+        return bird;
     }
 
     private void OnDisable()

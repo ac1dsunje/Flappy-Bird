@@ -24,27 +24,20 @@ public class EntryPoint: MonoBehaviour
 
     private IJumpInput _jumper;
 
-    private JumpInputFactory _jumpInputFactory;
     private PipesFactory _pipesFactory;
 
 
     private void Awake()
     {
-        CreateFactories();
+        _jumper = new JumpInputFactory(_jumpInputConfig).Get();
+        _pipesFactory = new(_pipesPoolConfig);
+
         CreateBorders();
 
         _bird = CreateBird();
 
         _pipesSpawner.Initialize(_pipesConfig, _pipesFactory);
         _gameManager = new(_scene, _bird, _scoreText);
-    }
-
-    private void CreateFactories()
-    {
-        _jumpInputFactory = new(_jumpInputConfig);
-        _jumper = _jumpInputFactory.Get();
-
-        _pipesFactory = new(_pipesPoolConfig);
     }
 
     private void CreateBorders()

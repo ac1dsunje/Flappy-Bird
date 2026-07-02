@@ -101,9 +101,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5100050600278358508}
   - component: {fileID: 3945501361022668444}
-  - component: {fileID: 5598084356253743130}
   - component: {fileID: 830932883911130282}
   - component: {fileID: 1860071452370131490}
+  - component: {fileID: 5609790553572052447}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Player
@@ -154,18 +154,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5598084356253743130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8238591014226347261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5429855ac7f200438e6472ea1764451, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BirdController
 --- !u!68 &830932883911130282
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -283,3 +271,15 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.06
+--- !u!114 &5609790553572052447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238591014226347261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643c680312b78cc44ba8db53a69e9487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BirdView

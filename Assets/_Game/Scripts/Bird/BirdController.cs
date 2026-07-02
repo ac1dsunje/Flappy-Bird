@@ -1,56 +1,39 @@
-using System;
-using UnityEngine;
+﻿using System;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class BirdController : MonoBehaviour
+public class BirdController: IDisposable
 {
-    private MovementConfigSO _config;
-    private Rigidbody2D _rb;
-    private IJumpInput _input;
+    private readonly BirdModel _model;
+    private readonly BirdView _view;
+    private readonly IJumpInput _jumpInput;
 
     public event Action OnHit;
     public event Action OnPipePassed;
 
-    public BirdController Initialize(MovementConfigSO config, IJumpInput input)
+    public BirdController(BirdModel model, BirdView view, IJumpInput input)
     {
-        _config = config; 
-        _input = input;
+        _model = model;
+        _view = view;
+        _view.OnHit += OnHitHandle;
+        _view.OnPipePassed += OnPipePassedHandle;
 
-        _input.OnJumpPressed += Jump;
 
-        _rb = GetComponent<Rigidbody2D>();
-        return this;
-    }
-
-    private void OnDisable()
-    {
-        _input.OnJumpPressed -= Jump;
+        _jumpInput = input;
+        _jumpInput.OnJumpPressed += Jump;
     }
 
     private void Jump()
     {
-        _rb.linearVelocity = Vector2.up * _config.JumpSpeed;
-        RotateUp();
+        _view.Jump(_model.JumpForce, _model.RotatePower);
     }
 
-    private void RotateUp()
-    {
-        transform.eulerAngles = new Vector3(0, 0, _rb.linearVelocityY * _config.RotatePower);
-    }
+    private void OnHitHandle() => OnHit?.Invoke();
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Pipe") || other.gameObject.CompareTag("Border"))
-        {
-            OnHit?.Invoke();
-        }
-    }
+    private void OnPipePassedHandle() => OnPipePassed?.Invoke();
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Dispose()
     {
-        if (collision.CompareTag("Pipe"))
-        {
-            OnPipePassed?.Invoke();
-        }
+        _jumpInput.OnJumpPressed -= Jump;
+        _view.OnHit -= OnHitHandle;
+        _view.OnPipePassed -= OnPipePassedHandle;
     }
 }

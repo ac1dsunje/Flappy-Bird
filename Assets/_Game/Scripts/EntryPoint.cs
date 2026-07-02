@@ -49,13 +49,17 @@ public class EntryPoint: MonoBehaviour
 
     private BirdController CreateBird()
     {
-        var bird = Instantiate(_birdConfig.Prefab, _birdConfig.SpawnPoint, Quaternion.identity).GetComponent<BirdController>();
-        bird.Initialize(_birdConfig.Movement, _jumpInput);
-        return bird;
+        BirdModel model = new(_birdConfig.Movement);
+        var view = Instantiate(_birdConfig.Prefab, _birdConfig.SpawnPoint, Quaternion.identity).GetComponent<BirdView>();
+        view.Initialize();
+
+        BirdController controller = new(model, view, _jumpInput); 
+        return controller;
     }
 
     private void OnDisable()
     {
+        _bird.Dispose();
         _gameManager.Dispose();
     }
 }

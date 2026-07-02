@@ -22,14 +22,14 @@ public class EntryPoint: MonoBehaviour
     private BirdController _bird;
     private GameManager _gameManager;
 
-    private IJumpInput _jumper;
+    private IJumpInput _jumpInput;
 
     private PipesFactory _pipesFactory;
 
 
     private void Awake()
     {
-        _jumper = new JumpInputFactory(_jumpInputConfig).Get();
+        _jumpInput = new JumpInputFactory(_jumpInputConfig).Get();
         _pipesFactory = new(_pipesPoolConfig);
 
         CreateBorders();
@@ -50,7 +50,7 @@ public class EntryPoint: MonoBehaviour
     private BirdController CreateBird()
     {
         var bird = Instantiate(_birdConfig.Prefab, _birdConfig.SpawnPoint, Quaternion.identity).GetComponent<BirdController>();
-        bird.Initialize(_birdConfig.Movement, _jumper);
+        bird.Initialize(_birdConfig.Movement, _jumpInput);
         return bird;
     }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6af484011442624fab42154335c6003, type: 3}
-  m_Name: BirdAnimationConfig
+  m_Name: PlayerAnimationConfig
   m_EditorClassIdentifier: Assembly-CSharp::BirdAnimationSO
   <RotatePower>k__BackingField: 3
   <RotateDownAngle>k__BackingField: -45

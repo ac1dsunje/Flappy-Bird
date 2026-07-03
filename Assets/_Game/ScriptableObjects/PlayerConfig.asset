@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7fe1f1043491c849be1c4071188db8c, type: 3}
-  m_Name: BirdConfig
+  m_Name: PlayerConfig
   m_EditorClassIdentifier: Assembly-CSharp::BirdConfigSO
   <JumpSpeed>k__BackingField: 7
   <Animation>k__BackingField: {fileID: 11400000, guid: d444b6624d586c84dab1c5b17225337d, type: 2}

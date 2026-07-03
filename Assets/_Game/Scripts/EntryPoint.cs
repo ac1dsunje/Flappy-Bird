@@ -6,7 +6,7 @@ public class EntryPoint: MonoBehaviour
     [Scene][SerializeField] private string _scene;
     [SerializeField] private CameraController _cam;
 
-    [SerializeField] private BirdConfigSO _birdConfig;
+    [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private JumpInputSO _jumpInputConfig;
 
     [SerializeField]  private TextMeshProUGUI _scoreText;
@@ -19,7 +19,7 @@ public class EntryPoint: MonoBehaviour
     [Header("Borders")]
     [SerializeField] private BordersConfigSO _bordersConfig;
 
-    private BirdController _bird;
+    private PlayerController _player;
     private GameManager _gameManager;
     private PipesSpawner _pipesSpawner;
 
@@ -37,12 +37,12 @@ public class EntryPoint: MonoBehaviour
 
         CreateBorders();
 
-        _bird = CreateBird();
+        _player = CreatePlayer();
 
         _pipesSpawner = Instantiate(_pipesConfig.PipeSpawnerPrefab, new Vector3(_cam.GetRightEdge(), 0, 0), Quaternion.identity, transform)
             .GetComponent<PipesSpawner>().Initialize(_pipesConfig, _pipesFactory, _cam.GetHeight());
 
-        _gameManager = new(_scene, _bird, _scoreText);
+        _gameManager = new(_scene, _player, _scoreText);
     }
 
     private void CreateBorders()
@@ -52,19 +52,19 @@ public class EntryPoint: MonoBehaviour
         Instantiate(_bordersConfig.Sky, new Vector3(0, _cam.GetLowestPoint(), 0), Quaternion.identity);
     }
 
-    private BirdController CreateBird()
+    private PlayerController CreatePlayer()
     {
-        BirdModel model = new(_birdConfig.JumpSpeed);
-        var view = Instantiate(_birdConfig.Prefab, _birdConfig.SpawnPoint, Quaternion.identity)
-            .GetComponent<BirdView>().Initialize(_birdConfig.Animation);
+        PlayerModel model = new(_playerConfig.JumpSpeed);
+        var view = Instantiate(_playerConfig.Prefab, _playerConfig.SpawnPoint, Quaternion.identity)
+            .GetComponent<PlayerView>().Initialize(_playerConfig.Animation);
 
-        BirdController controller = new(model, view, _jumpInput); 
+        PlayerController controller = new(model, view, _jumpInput); 
         return controller;
     }
 
     private void OnDisable()
     {
-        _bird.Dispose();
+        _player.Dispose();
         _gameManager.Dispose();
     }
 }

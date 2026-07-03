@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EntryPoint
   _scene: Assets/_Game/Scenes/GamePlayScene.unity
   _cam: {fileID: 519420033}
-  _birdConfig: {fileID: 11400000, guid: ae4d494953eeafb499195d1f4c4f533c, type: 2}
+  _playerConfig: {fileID: 11400000, guid: ae4d494953eeafb499195d1f4c4f533c, type: 2}
   _jumpInputConfig: {fileID: 11400000, guid: 08848a3e96fd56547b1b9a9e06bffa3f, type: 2}
   _scoreText: {fileID: 994889656}
   _pipesConfig: {fileID: 11400000, guid: ded29e51a0ec76e4c86727128c787db0, type: 2}

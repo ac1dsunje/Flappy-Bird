@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "BirdAnimationConfig", menuName = "Game/Bird/animation config")]
-public class BirdAnimationSO : ScriptableObject
+[CreateAssetMenu(fileName = "playerAnimationConfig", menuName = "Game/Player/animation config")]
+public class PlayerViewConfig : ScriptableObject
 {
     [field: SerializeField] public float RotatePower { get; private set; }
     [field: SerializeField] public float RotateDownAngle { get; private set; } = -45f;

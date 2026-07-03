@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 public class GameManager: IDisposable
 {
     private readonly string _scene;
-    private readonly BirdController _bird;
+    private readonly PlayerController _player;
     private readonly TextMeshProUGUI _scoreText;
 
     private int _score;
 
-    public GameManager(string scene, BirdController bird, TextMeshProUGUI scoreText)
+    public GameManager(string scene, PlayerController player, TextMeshProUGUI scoreText)
     {
         _scene = scene;
-        _bird = bird;
+        _player = player;
         _scoreText = scoreText;
 
-        _bird.OnHit += RestartGame;
-        _bird.OnPipePassed += OnPipePassed;
+        _player.OnHit += RestartGame;
+        _player.OnPipePassed += OnPipePassed;
     }
 
     private void RestartGame()
@@ -33,7 +33,7 @@ public class GameManager: IDisposable
 
     public void Dispose()
     {
-        _bird.OnHit -= RestartGame;
-        _bird.OnPipePassed -= OnPipePassed;
+        _player.OnHit -= RestartGame;
+        _player.OnPipePassed -= OnPipePassed;
     }
 }

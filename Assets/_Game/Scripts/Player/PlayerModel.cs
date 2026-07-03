@@ -1,8 +1,8 @@
-﻿public class BirdModel
+﻿public class PlayerModel
 {
     public float JumpForce { get; private set; }
 
-    public BirdModel(float jumpSpeed)
+    public PlayerModel(float jumpSpeed)
     {
         JumpForce = jumpSpeed;
     }

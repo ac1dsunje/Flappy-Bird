@@ -1,15 +1,15 @@
 ﻿using System;
 
-public class BirdController: IDisposable
+public class PlayerController: IDisposable
 {
-    private readonly BirdModel _model;
-    private readonly IBirdView _view;
+    private readonly PlayerModel _model;
+    private readonly IPlayerView _view;
     private readonly IJumpInput _jumpInput;
 
     public event Action OnHit;
     public event Action OnPipePassed;
 
-    public BirdController(BirdModel model, IBirdView view, IJumpInput input)
+    public PlayerController(PlayerModel model, IPlayerView view, IJumpInput input)
     {
         _model = model;
         _view = view;

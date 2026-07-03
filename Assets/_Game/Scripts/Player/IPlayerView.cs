@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface IBirdView
+public interface IPlayerView
 {
     public event Action OnHit;
     public event Action OnPipePassed;

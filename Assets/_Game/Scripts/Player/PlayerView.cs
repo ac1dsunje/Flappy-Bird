@@ -2,15 +2,15 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BirdView : MonoBehaviour, IBirdView
+public class PlayerView : MonoBehaviour, IPlayerView
 {
     private Rigidbody2D _rb;
-    private BirdAnimationSO _config;
+    private PlayerViewConfig _config;
 
     public event Action OnHit;
     public event Action OnPipePassed;
 
-    public BirdView Initialize(BirdAnimationSO config)
+    public PlayerView Initialize(PlayerViewConfig config)
     {
         _config = config;
         _rb = GetComponent<Rigidbody2D>();

@@ -149,11 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntryPoint
   _scene: Assets/_Game/Scenes/GamePlayScene.unity
-  _cam: {fileID: 519420031}
+  _cam: {fileID: 519420033}
   _birdConfig: {fileID: 11400000, guid: ae4d494953eeafb499195d1f4c4f533c, type: 2}
   _jumpInputConfig: {fileID: 11400000, guid: 08848a3e96fd56547b1b9a9e06bffa3f, type: 2}
   _scoreText: {fileID: 994889656}
-  _pipesSpawner: {fileID: 342774153}
   _pipesConfig: {fileID: 11400000, guid: ded29e51a0ec76e4c86727128c787db0, type: 2}
   _pipesPoolConfig: {fileID: 11400000, guid: 20cfb56df64035241a8c9bac8ccaf1b8, type: 2}
   _pipesBlockPoolConfig: {fileID: 11400000, guid: fcddd68c65f731d4b858142d1f5fb8ba, type: 2}
@@ -170,53 +169,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 342774154}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &342774152
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 342774154}
-  - component: {fileID: 342774153}
-  m_Layer: 0
-  m_Name: PipesSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &342774153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342774152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1d5cc325c073e6478f18b1b47d99900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PipesSpawner
---- !u!4 &342774154
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342774152}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 204636879}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -230,6 +184,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -355,6 +310,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c504e452547d48340b0f692ba3b660ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  _camera: {fileID: 519420031}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

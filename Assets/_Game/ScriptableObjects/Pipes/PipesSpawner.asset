@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4eb3121650f6143bb44c134fd9fdfd, type: 3}
   m_Name: PipesSpawner
   m_EditorClassIdentifier: Assembly-CSharp::PipesConfigSO
+  <PipeSpawnerPrefab>k__BackingField: {fileID: 4014605042309313887, guid: f119dac0540626a4b9ec94ed82d506fd, type: 3}
   <PipeConfig>k__BackingField: {fileID: 11400000, guid: 1be7256d29edac345b706bfedbd8bcbd, type: 2}
   <PipePrefab>k__BackingField: {fileID: 4014605042309313887, guid: 9548904809c4b044ca01c3def01b518d, type: 3}
   <SpawnIntervalMax>k__BackingField: 2

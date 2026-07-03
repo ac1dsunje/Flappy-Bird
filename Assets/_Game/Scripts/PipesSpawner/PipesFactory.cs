@@ -16,12 +16,13 @@ public class PipesFactory : PooledComponentFactory<PipeController>
     public PipeController Get(
         GameObject pipePrefab,
         PipeConfigSO pipeConfig,
-        Transform parent)
+        Transform parent,
+        int camHeight)
     {
         var pipe = GetItem(pipePrefab);
         pipe.transform.SetParent(parent, false);
         pipe.transform.position = parent.position;
-        pipe.Initialize(pipeConfig, _blockFactory);
+        pipe.Initialize(pipeConfig, _blockFactory, camHeight);
         return pipe;
     }
 }

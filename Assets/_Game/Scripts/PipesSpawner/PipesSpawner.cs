@@ -7,15 +7,18 @@ public class PipesSpawner : MonoBehaviour
     private PipeSpawnerConfig _config;
     private float _spawnInterval;
 
+    private int _camHeight;
+
     private Coroutine _spawnCoroutine;
     private List<PipeController> _pipes = new();
     private PipesFactory _pipesFactory;
 
-    public PipesSpawner Initialize(PipeSpawnerConfig config, PipesFactory pipesFactory)
+    public PipesSpawner Initialize(PipeSpawnerConfig config, PipesFactory pipesFactory, int camHeight)
     {
         _config = config;
         _spawnInterval = _config.SpawnIntervalMax;
         _pipesFactory = pipesFactory;
+        _camHeight = camHeight;
         Run();
         return this;
     }
@@ -43,7 +46,7 @@ public class PipesSpawner : MonoBehaviour
 
     private void SpawnPipe()
     {
-        var pipe = _pipesFactory.Get(_config.PipePrefab, _config.PipeConfig, transform);
+        var pipe = _pipesFactory.Get(_config.PipePrefab, _config.PipeConfig, transform, _camHeight);
 
         pipe.OnPipeFinished += OnPipeFinished;
         _pipes.Add(pipe);

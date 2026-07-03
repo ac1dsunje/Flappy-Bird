@@ -13,8 +13,9 @@ public class EntryPoint: MonoBehaviour
 
     [Header("Pipes")]
     [SerializeField] private PipesSpawner _pipesSpawner;
-    [SerializeField] private PipesConfigSO _pipesConfig;
+    [SerializeField] private PipeSpawnerConfig _pipesConfig;
     [SerializeField] private PoolConfig _pipesPoolConfig;
+    [SerializeField] private PoolConfig _pipesBlockPoolConfig;
 
     [Header("Borders")]
     [SerializeField] private BordersConfigSO _bordersConfig;
@@ -25,12 +26,14 @@ public class EntryPoint: MonoBehaviour
     private IJumpInput _jumpInput;
 
     private PipesFactory _pipesFactory;
+    private PipeBlockFactory _pipesBlockFactory;
 
 
     private void Awake()
     {
         _jumpInput = new JumpInputFactory(_jumpInputConfig).Get();
-        _pipesFactory = new(_pipesPoolConfig);
+        _pipesBlockFactory = new(_pipesBlockPoolConfig);
+        _pipesFactory = new(_pipesPoolConfig, _pipesBlockFactory);
 
         CreateBorders();
 

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BirdAnimationSO
   <RotatePower>k__BackingField: 3
   <RotateDownAngle>k__BackingField: -45
-  <RotateDownTime>k__BackingField: 7
+  <RotateDownTime>k__BackingField: 3

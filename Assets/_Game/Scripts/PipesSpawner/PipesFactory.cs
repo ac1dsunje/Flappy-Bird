@@ -2,7 +2,11 @@
 
 public class PipesFactory : PooledComponentFactory<PipeController>
 {
-    public PipesFactory(PoolConfig poolConfig) : base(poolConfig) { }
+    private readonly PipeBlockFactory _blockFactory;
+    public PipesFactory(PoolConfig poolConfig, PipeBlockFactory blockFactory) : base(poolConfig) 
+    {
+        _blockFactory = blockFactory;
+    }
 
     protected override PipeController Create(GameObject prefab)
     {
@@ -10,14 +14,14 @@ public class PipesFactory : PooledComponentFactory<PipeController>
     }
 
     public PipeController Get(
-        GameObject prefab,
-        Transform parent,
-        float moveSpeed)
+        GameObject pipePrefab,
+        PipeConfigSO pipeConfig,
+        Transform parent)
     {
-        var pipe = GetItem(prefab);
+        var pipe = GetItem(pipePrefab);
         pipe.transform.SetParent(parent, false);
         pipe.transform.position = parent.position;
-        pipe.Initialize(moveSpeed);
+        pipe.Initialize(pipeConfig, _blockFactory);
         return pipe;
     }
 }

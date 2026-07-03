@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class PipesSpawner : MonoBehaviour
 {
-    private PipesConfigSO _config;
+    private PipeSpawnerConfig _config;
     private float _spawnInterval;
 
     private Coroutine _spawnCoroutine;
     private List<PipeController> _pipes = new();
     private PipesFactory _pipesFactory;
 
-    public PipesSpawner Initialize(PipesConfigSO config, PipesFactory pipesFactory)
+    public PipesSpawner Initialize(PipeSpawnerConfig config, PipesFactory pipesFactory)
     {
         _config = config;
         _spawnInterval = _config.SpawnIntervalMax;
@@ -44,8 +43,7 @@ public class PipesSpawner : MonoBehaviour
 
     private void SpawnPipe()
     {
-        int rand = Random.Range(0, _config.PipePrefabs.Length);
-        var pipe = _pipesFactory.Get(_config.PipePrefabs[rand], transform, _config.MoveSpeed);
+        var pipe = _pipesFactory.Get(_config.PipePrefab, _config.PipeConfig, transform);
 
         pipe.OnPipeFinished += OnPipeFinished;
         _pipes.Add(pipe);
@@ -54,6 +52,7 @@ public class PipesSpawner : MonoBehaviour
     private void OnPipeFinished(PipeController pipe)
     {
         pipe.OnPipeFinished -= OnPipeFinished;
+        pipe.ReleaseBlocks();
         _pipes.Remove(pipe);
         _pipesFactory.Release(pipe);
     }

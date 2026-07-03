@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2049812129252769593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,9 +101,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5100050600278358508}
   - component: {fileID: 3945501361022668444}
-  - component: {fileID: 830932883911130282}
-  - component: {fileID: 1860071452370131490}
   - component: {fileID: 5609790553572052447}
+  - component: {fileID: 215490753183672821}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Player
@@ -120,8 +119,8 @@ Transform:
   m_GameObject: {fileID: 8238591014226347261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1364291961244255027}
@@ -154,7 +153,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &830932883911130282
+--- !u!114 &5609790553572052447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238591014226347261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643c680312b78cc44ba8db53a69e9487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BirdView
+--- !u!68 &215490753183672821
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,95 +202,46 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.050947372, y: -0.060938895}
-  - {x: -0.050721005, y: -0.050383523}
-  - {x: -0.07046019, y: -0.050580893}
-  - {x: -0.070081666, y: -0.04060953}
-  - {x: -0.08081555, y: -0.040504374}
-  - {x: -0.08022228, y: -0.029966334}
-  - {x: -0.090647265, y: -0.03063252}
-  - {x: -0.089890495, y: -0.020405117}
-  - {x: -0.10022944, y: -0.020655755}
-  - {x: -0.10045178, y: 0.00060820207}
-  - {x: -0.09006625, y: 0.00018254295}
-  - {x: -0.090095036, y: 0.020373661}
-  - {x: -0.08003591, y: 0.01995639}
-  - {x: -0.08040418, y: 0.03028747}
-  - {x: -0.069908634, y: 0.030635204}
-  - {x: -0.07019591, y: 0.040720202}
-  - {x: -0.05997368, y: 0.04024722}
-  - {x: -0.060340054, y: 0.05037328}
-  - {x: -0.040255696, y: 0.050219923}
-  - {x: -0.04026381, y: 0.06035918}
-  - {x: 0.050303135, y: 0.06068327}
-  - {x: 0.05083353, y: 0.050441694}
-  - {x: 0.060449984, y: 0.05037366}
-  - {x: 0.06035803, y: 0.039841592}
-  - {x: 0.07069609, y: 0.04030067}
-  - {x: 0.07019221, y: 0.00065841526}
-  - {x: 0.0898417, y: 0.0010217112}
-  - {x: 0.09028328, y: -0.009236649}
-  - {x: 0.10036052, y: -0.0091075525}
-  - {x: 0.10036546, y: -0.020140855}
-  - {x: 0.090259865, y: -0.020398183}
-  - {x: 0.09076578, y: -0.030228607}
-  - {x: 0.08035935, y: -0.030228317}
-  - {x: 0.08106817, y: -0.04025698}
-  - {x: 0.070463926, y: -0.04047237}
-  - {x: 0.070802614, y: -0.05046694}
-  - {x: -0.00006920844, y: -0.050827727}
-  - {x: 0.0006996542, y: -0.060138874}
-  - {x: -0.041699167, y: -0.06075188}
-  - {x: -0.050648917, y: -0.06088128}
+  - {x: 0.2203917, y: -0.0007874854}
+  - {x: 0.2803557, y: -0.0007423158}
+  - {x: 0.280857, y: -0.031122323}
+  - {x: 0.313026, y: -0.031126386}
+  - {x: 0.31278032, y: -0.061968327}
+  - {x: 0.28241566, y: -0.06219483}
+  - {x: 0.28204855, y: -0.09362347}
+  - {x: 0.24970818, y: -0.093739256}
+  - {x: 0.24969697, y: -0.124718815}
+  - {x: 0.2192848, y: -0.1244432}
+  - {x: 0.21886894, y: -0.15577331}
+  - {x: -0.0015871227, y: -0.15578038}
+  - {x: -0.0007095784, y: -0.18780266}
+  - {x: -0.15515666, y: -0.18661074}
+  - {x: -0.15581106, y: -0.15725335}
+  - {x: -0.21784762, y: -0.1552082}
+  - {x: -0.21819073, y: -0.12420315}
+  - {x: -0.24960887, y: -0.12401314}
+  - {x: -0.24959683, y: -0.09293334}
+  - {x: -0.28119802, y: -0.09354875}
+  - {x: -0.28094715, y: -0.0621068}
+  - {x: -0.31324637, y: -0.061791558}
+  - {x: -0.3118266, y: 0.00003968645}
+  - {x: -0.2813186, y: -0.0006459644}
+  - {x: -0.2812633, y: 0.06211489}
+  - {x: -0.24975899, y: 0.06191993}
+  - {x: -0.25033715, y: 0.09380955}
+  - {x: -0.21830316, y: 0.09378653}
+  - {x: -0.2189098, y: 0.12469512}
+  - {x: -0.18747501, y: 0.12440764}
+  - {x: -0.18717025, y: 0.15594901}
+  - {x: -0.12481494, y: 0.15628995}
+  - {x: -0.12486692, y: 0.18714435}
+  - {x: 0.15580212, y: 0.18726166}
+  - {x: 0.155802, y: 0.15567523}
+  - {x: 0.1871342, y: 0.15604669}
+  - {x: 0.18714404, y: 0.12483212}
+  - {x: 0.21883793, y: 0.124585174}
+  - {x: 0.21843761, y: -0.0007874551}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!58 &1860071452370131490
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8238591014226347261}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.06
---- !u!114 &5609790553572052447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8238591014226347261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643c680312b78cc44ba8db53a69e9487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BirdView

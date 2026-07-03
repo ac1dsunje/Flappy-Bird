@@ -5,16 +5,21 @@ using UnityEngine;
 public class BirdView : MonoBehaviour, IBirdView
 {
     private Rigidbody2D _rb;
-    private float _rotatePower;
+    private BirdAnimationSO _config;
 
     public event Action OnHit;
     public event Action OnPipePassed;
 
-    public BirdView Initialize(float rotatePower)
+    public BirdView Initialize(BirdAnimationSO config)
     {
-        _rotatePower = rotatePower;
+        _config = config;
         _rb = GetComponent<Rigidbody2D>();
         return this;
+    }
+
+    private void Update()
+    {
+        RotateDown();
     }
 
     public void Jump(float jumpSpeed)
@@ -23,9 +28,14 @@ public class BirdView : MonoBehaviour, IBirdView
         RotateUp();
     }
 
+    private void RotateDown()
+    {
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, _config.RotateDownAngle), _config.RotateDownTime * Time.deltaTime);
+    }
+
     private void RotateUp()
     {
-        transform.eulerAngles = new Vector3(0, 0, _rb.linearVelocityY * _rotatePower);
+        transform.eulerAngles = new Vector3(0, 0, _rb.linearVelocityY * _config.RotatePower);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -51,7 +51,7 @@ public class EntryPoint: MonoBehaviour
     {
         BirdModel model = new(_birdConfig.JumpSpeed);
         var view = Instantiate(_birdConfig.Prefab, _birdConfig.SpawnPoint, Quaternion.identity)
-            .GetComponent<BirdView>().Initialize(_birdConfig.RotatePower);
+            .GetComponent<BirdView>().Initialize(_birdConfig.Animation);
 
         BirdController controller = new(model, view, _jumpInput); 
         return controller;

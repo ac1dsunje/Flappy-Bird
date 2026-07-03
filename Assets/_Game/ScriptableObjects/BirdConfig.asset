@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BirdConfig
   m_EditorClassIdentifier: Assembly-CSharp::BirdConfigSO
   <JumpSpeed>k__BackingField: 7
-  <RotatePower>k__BackingField: 3
+  <Animation>k__BackingField: {fileID: 11400000, guid: d444b6624d586c84dab1c5b17225337d, type: 2}
   <Prefab>k__BackingField: {fileID: 8238591014226347261, guid: 1de4a92146fae9649b648ce2cc643c8e, type: 3}
   <SpawnPoint>k__BackingField: {x: 0, y: 0}

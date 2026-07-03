@@ -58,7 +58,7 @@ public class PipeController: MonoBehaviour
     {
         Vector3 gapPos;
 
-        int rand = Random.Range(lowestPoint + 1, highestPoint - 1);
+        int rand = Random.Range(lowestPoint + 1, highestPoint - gap + 1);
 
         for (int i = 0; i < gap; i++)
         {
@@ -81,7 +81,7 @@ public class PipeController: MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_rb == null) return;
 

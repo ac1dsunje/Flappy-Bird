@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+namespace _Game.Scripts.PipesSpawner.Pipe
+{
 [RequireComponent(typeof(Rigidbody2D))]
 public class PipeController: MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class PipeController: MonoBehaviour
     private PipeBlockFactory _blockFactory;
 
     private GameObject _blockPrefab;
-    private List<GameObject> _blocks = new();
+    private readonly List<GameObject> _blocks = new();
 
     public event Action<PipeController> OnPipeFinished;
 
@@ -94,4 +96,5 @@ public class PipeController: MonoBehaviour
             OnPipeFinished?.Invoke(this);
         }
     }
+}
 }

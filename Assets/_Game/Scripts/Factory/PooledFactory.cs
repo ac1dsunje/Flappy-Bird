@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
+namespace _Game.Scripts.Factory
+{
 public abstract class PooledFactory<T> where T : class
 {
     protected readonly PoolConfig _poolConfig;
@@ -58,4 +60,5 @@ public abstract class PooledFactory<T> where T : class
         }
         return pool;
     }
+}
 }

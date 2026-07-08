@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Game.Scripts.PipesSpawner.Pipe;
 using UnityEngine;
 
+namespace _Game.Scripts.PipesSpawner
+{
 public class PipesSpawner : MonoBehaviour
 {
     private PipeSpawnerConfig _config;
     private float _spawnInterval;
 
     private int _camHeight;
+    private readonly List<PipeController> _pipes = new();
 
     private Coroutine _spawnCoroutine;
-    private List<PipeController> _pipes = new();
     private PipesFactory _pipesFactory;
 
     public PipesSpawner Initialize(PipeSpawnerConfig config, PipesFactory pipesFactory, int camHeight)
@@ -30,7 +33,7 @@ public class PipesSpawner : MonoBehaviour
 
     private IEnumerator SpawnPipesLoop()
     {
-        int count = 0;
+        var count = 0;
         while (true)
         {
             SpawnPipe();
@@ -68,4 +71,5 @@ public class PipesSpawner : MonoBehaviour
             pipe.OnPipeFinished -= OnPipeFinished;
         }
     }
+}
 }

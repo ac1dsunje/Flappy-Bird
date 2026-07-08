@@ -1,7 +1,10 @@
 ﻿using System;
+using _Game.Scripts.Player;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+namespace _Game.Scripts
+{
 public class GameManager: IDisposable
 {
     private readonly string _scene;
@@ -36,4 +39,5 @@ public class GameManager: IDisposable
         _player.OnHit -= RestartGame;
         _player.OnPipePassed -= OnPipePassed;
     }
+}
 }

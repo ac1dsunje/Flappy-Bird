@@ -1,4 +1,6 @@
-﻿public class PlayerModel
+﻿namespace _Game.Scripts.Player
+{
+public class PlayerModel
 {
     public float JumpForce { get; private set; }
 
@@ -6,4 +8,5 @@
     {
         JumpForce = jumpSpeed;
     }
+}
 }

@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+namespace _Game.Scripts.Player
+{
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerView : MonoBehaviour, IPlayerView
 {
@@ -53,4 +55,5 @@ public class PlayerView : MonoBehaviour, IPlayerView
             OnPipePassed?.Invoke();
         }
     }
+}
 }

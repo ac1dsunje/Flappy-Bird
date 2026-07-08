@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
+namespace _Game.Scripts.Camera
+{
 public class CameraController: MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
+    [SerializeField] private UnityEngine.Camera _camera;
 
     public int GetHighestPoint()
     {
@@ -32,4 +34,5 @@ public class CameraController: MonoBehaviour
     {
         return (int)(_camera.orthographicSize * _camera.aspect + 1);
     }
+}
 }

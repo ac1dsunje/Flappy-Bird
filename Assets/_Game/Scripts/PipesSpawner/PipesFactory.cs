@@ -1,5 +1,9 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.Factory;
+using _Game.Scripts.PipesSpawner.Pipe;
+using UnityEngine;
 
+namespace _Game.Scripts.PipesSpawner
+{
 public class PipesFactory : PooledComponentFactory<PipeController>
 {
     private readonly PipeBlockFactory _blockFactory;
@@ -25,4 +29,5 @@ public class PipesFactory : PooledComponentFactory<PipeController>
         pipe.Initialize(pipeConfig, _blockFactory, camHeight);
         return pipe;
     }
+}
 }

@@ -1,4 +1,5 @@
-﻿using System;   
+﻿using System;
+using _Game.Scripts.Movement.Jump;
 using UnityEngine;
 
 public class JumpHandlerKeyboard : MonoBehaviour, IJumpInput

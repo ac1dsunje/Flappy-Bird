@@ -1,11 +1,12 @@
 ﻿using System;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
+namespace _Game.Scripts.Movement.Jump
+{
 public enum JumpInputTypes
 {
-    keyboard,
-    mouse
+    Keyboard,
+    Mouse
 }
 
 public class JumpInputFactory
@@ -19,18 +20,12 @@ public class JumpInputFactory
 
     public IJumpInput Get()
     {
-        switch (_config.Type)
+        return _config.Type switch
         {
-            case JumpInputTypes.keyboard:
-                return Object.Instantiate(_config.KeyboardPrefab)
-                    .GetComponent<IJumpInput>();
-
-            case JumpInputTypes.mouse:
-                return Object.Instantiate(_config.MousePrefab)
-                    .GetComponent<IJumpInput>();
-
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            JumpInputTypes.Keyboard => Object.Instantiate(_config.KeyboardPrefab).GetComponent<IJumpInput>(),
+            JumpInputTypes.Mouse => Object.Instantiate(_config.MousePrefab).GetComponent<IJumpInput>(),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
+}
 }

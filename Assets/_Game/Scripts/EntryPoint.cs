@@ -1,6 +1,14 @@
-﻿using TMPro;
+﻿using _Game.Scripts.Borders;
+using _Game.Scripts.Camera;
+using _Game.Scripts.Factory;
+using _Game.Scripts.Movement.Jump;
+using _Game.Scripts.PipesSpawner;
+using _Game.Scripts.Player;
+using TMPro;
 using UnityEngine;
 
+namespace _Game.Scripts
+{
 public class EntryPoint: MonoBehaviour
 {
     [Scene][SerializeField] private string _scene;
@@ -21,7 +29,7 @@ public class EntryPoint: MonoBehaviour
 
     private PlayerController _player;
     private GameManager _gameManager;
-    private PipesSpawner _pipesSpawner;
+    private PipesSpawner.PipesSpawner _pipesSpawner;
 
     private IJumpInput _jumpInput;
 
@@ -40,7 +48,7 @@ public class EntryPoint: MonoBehaviour
         _player = CreatePlayer();
 
         _pipesSpawner = Instantiate(_pipesConfig.PipeSpawnerPrefab, new Vector3(_cam.GetRightEdge(), 0, 0), Quaternion.identity, transform)
-            .GetComponent<PipesSpawner>().Initialize(_pipesConfig, _pipesFactory, _cam.GetHeight());
+            .GetComponent<PipesSpawner.PipesSpawner>().Initialize(_pipesConfig, _pipesFactory, _cam.GetHeight());
 
         _gameManager = new(_scene, _player, _scoreText);
     }
@@ -67,4 +75,5 @@ public class EntryPoint: MonoBehaviour
         _player.Dispose();
         _gameManager.Dispose();
     }
+}
 }

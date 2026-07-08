@@ -1,5 +1,8 @@
 ﻿using System;
+using _Game.Scripts.Movement.Jump;
 
+namespace _Game.Scripts.Player
+{
 public class PlayerController: IDisposable
 {
     private readonly PlayerModel _model;
@@ -36,4 +39,5 @@ public class PlayerController: IDisposable
         _view.OnHit -= OnHitHandle;
         _view.OnPipePassed -= OnPipePassedHandle;
     }
+}
 }

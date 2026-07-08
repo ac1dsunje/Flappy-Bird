@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace _Game.Scripts.PipesSpawner
+{
 [CreateAssetMenu(fileName = "PipeSpawner", menuName = "Game/Pipes/Spawner")]
 public class PipeSpawnerConfig: ScriptableObject
 {
@@ -10,4 +12,5 @@ public class PipeSpawnerConfig: ScriptableObject
     [field: SerializeField] public float SpawnIntervalMin { get; private set; } = 1f;
     [field: SerializeField] public int StepsToSpeedUp { get; private set; } = 10;
     [field: SerializeField] public float SpeedUpKoef { get; private set; } = 0.1f;
+}
 }

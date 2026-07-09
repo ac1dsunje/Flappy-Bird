@@ -42,15 +42,16 @@ public class EntryPoint: MonoBehaviour
 
     private void Awake()
     {
-        _jumpInput = new JumpInputFactory(_jumpInputConfig).Get();
+        CreateBorders();
+        
         _pipesBlockFactory = new(_pipesBlockPoolConfig);
         _pipesFactory = new(_pipesPoolConfig, _pipesBlockFactory);
-
-        CreateBorders();
-
-        _player = CreatePlayer();
-
         _pipesSpawner.Initialize(_pipesConfig, _pipesFactory, _cam.GetHeight(), new Vector3(_cam.GetRightEdge(), 0, 0));
+
+        _jumpInput = new JumpInputFactory(_jumpInputConfig).Get();
+        PlayerModel model = new(_playerConfig.JumpSpeed);
+        _playerView.Initialize(_playerConfig.Animation);
+        _player = new(model, _playerView, _jumpInput); 
 
         _gameManager = new(_scene, _player, _scoreText);
     }
@@ -60,15 +61,6 @@ public class EntryPoint: MonoBehaviour
         _endBorder.position = new Vector3(_cam.GetLeftEdge(), 0, 0);
         _skyBorder.position = new Vector3(0, _cam.GetLowestPoint(), 0);
         _downBorder.position = new Vector3(0, _cam.GetHighestPoint(), 0);
-    }
-
-    private PlayerController CreatePlayer()
-    {
-        PlayerModel model = new(_playerConfig.JumpSpeed);
-        _playerView.Initialize(_playerConfig.Animation);
-
-        PlayerController controller = new(model, _playerView, _jumpInput); 
-        return controller;
     }
 
     private void OnDisable()

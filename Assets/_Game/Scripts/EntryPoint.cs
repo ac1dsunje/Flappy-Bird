@@ -39,7 +39,6 @@ public class EntryPoint: MonoBehaviour
     private PipesFactory _pipesFactory;
     private PipeBlockFactory _pipesBlockFactory;
 
-
     private void Awake()
     {
         CreateBorders();

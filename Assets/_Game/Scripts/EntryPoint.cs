@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.Borders;
-using _Game.Scripts.Camera;
+﻿using _Game.Scripts.Camera;
 using _Game.Scripts.Factory;
 using _Game.Scripts.Movement.Jump;
 using _Game.Scripts.PipesSpawner;
@@ -14,22 +13,26 @@ public class EntryPoint: MonoBehaviour
     [Scene][SerializeField] private string _scene;
     [SerializeField] private CameraController _cam;
 
+    [SerializeField]  private TextMeshProUGUI _scoreText;
+    
+    [Header("Player")]
+    [SerializeField] private PlayerView _playerView;
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private JumpInputSO _jumpInputConfig;
 
-    [SerializeField]  private TextMeshProUGUI _scoreText;
-
-    [Header("Pipes")]
+    [Header("Pipes")] 
+    [SerializeField] private PipesSpawner.PipesSpawner _pipesSpawner;
     [SerializeField] private PipeSpawnerConfig _pipesConfig;
     [SerializeField] private PoolConfig _pipesPoolConfig;
     [SerializeField] private PoolConfig _pipesBlockPoolConfig;
 
     [Header("Borders")]
-    [SerializeField] private BordersConfigSO _bordersConfig;
+    [SerializeField] private Transform _skyBorder;
+    [SerializeField] private Transform _endBorder;
+    [SerializeField] private Transform _downBorder;
 
     private PlayerController _player;
     private GameManager _gameManager;
-    private PipesSpawner.PipesSpawner _pipesSpawner;
 
     private IJumpInput _jumpInput;
 
@@ -47,26 +50,24 @@ public class EntryPoint: MonoBehaviour
 
         _player = CreatePlayer();
 
-        _pipesSpawner = Instantiate(_pipesConfig.PipeSpawnerPrefab, new Vector3(_cam.GetRightEdge(), 0, 0), Quaternion.identity, transform)
-            .GetComponent<PipesSpawner.PipesSpawner>().Initialize(_pipesConfig, _pipesFactory, _cam.GetHeight());
+        _pipesSpawner.Initialize(_pipesConfig, _pipesFactory, _cam.GetHeight(), new Vector3(_cam.GetRightEdge(), 0, 0));
 
         _gameManager = new(_scene, _player, _scoreText);
     }
 
     private void CreateBorders()
     {
-        Instantiate(_bordersConfig.Start, new Vector3(_cam.GetLeftEdge(), 0, 0), Quaternion.identity);
-        Instantiate(_bordersConfig.Ground, new Vector3(0, _cam.GetHighestPoint(), 0), Quaternion.identity);
-        Instantiate(_bordersConfig.Sky, new Vector3(0, _cam.GetLowestPoint(), 0), Quaternion.identity);
+        _endBorder.position = new Vector3(_cam.GetLeftEdge(), 0, 0);
+        _skyBorder.position = new Vector3(0, _cam.GetLowestPoint(), 0);
+        _downBorder.position = new Vector3(0, _cam.GetHighestPoint(), 0);
     }
 
     private PlayerController CreatePlayer()
     {
         PlayerModel model = new(_playerConfig.JumpSpeed);
-        var view = Instantiate(_playerConfig.Prefab, _playerConfig.SpawnPoint, Quaternion.identity)
-            .GetComponent<PlayerView>().Initialize(_playerConfig.Animation);
+        _playerView.Initialize(_playerConfig.Animation);
 
-        PlayerController controller = new(model, view, _jumpInput); 
+        PlayerController controller = new(model, _playerView, _jumpInput); 
         return controller;
     }
 

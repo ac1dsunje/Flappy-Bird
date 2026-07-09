@@ -5,7 +5,6 @@ namespace _Game.Scripts.PipesSpawner
 [CreateAssetMenu(fileName = "PipeSpawner", menuName = "Game/Pipes/Spawner")]
 public class PipeSpawnerConfig: ScriptableObject
 {
-    [field: SerializeField] public GameObject PipeSpawnerPrefab { get; private set; }
     [field: SerializeField] public PipeConfigSO PipeConfig { get; private set; }
     [field: SerializeField] public GameObject PipePrefab { get; private set; }
     [field: SerializeField] public float SpawnIntervalMax { get; private set; } = 2f;

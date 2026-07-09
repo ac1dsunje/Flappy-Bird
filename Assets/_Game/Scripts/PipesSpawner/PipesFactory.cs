@@ -12,11 +12,6 @@ public class PipesFactory : PooledComponentFactory<PipeController>
         _blockFactory = blockFactory;
     }
 
-    protected override PipeController Create(GameObject prefab)
-    {
-        return Object.Instantiate(prefab).GetComponent<PipeController>();
-    }
-
     public PipeController Get(
         GameObject pipePrefab,
         PipeConfigSO pipeConfig,

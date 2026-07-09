@@ -5,11 +5,6 @@ public class PipeBlockFactory : PooledGameObjectFactory
 {
     public PipeBlockFactory(PoolConfig poolConfig) : base(poolConfig) { }
 
-    protected override GameObject Create(GameObject prefab)
-    {
-        return Object.Instantiate(prefab);
-    }
-
     public GameObject Get(
         GameObject prefab,
         Transform parent,

@@ -16,7 +16,7 @@ public class PipesSpawner : MonoBehaviour
     private Coroutine _spawnCoroutine;
     private PipesFactory _pipesFactory;
 
-    public PipesSpawner Initialize(PipeSpawnerConfig config, PipesFactory pipesFactory, int camHeight, Vector3 spawnPoint)
+    public void Initialize(PipeSpawnerConfig config, PipesFactory pipesFactory, int camHeight, Vector3 spawnPoint)
     {
         _config = config;
         _spawnInterval = _config.SpawnIntervalMax;
@@ -25,7 +25,6 @@ public class PipesSpawner : MonoBehaviour
         
         transform.position = spawnPoint;
         Run();
-        return this;
     }
 
     private void Run()
